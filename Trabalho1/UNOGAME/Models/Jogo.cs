@@ -1,0 +1,29 @@
+namespace UNOGAME.Models;
+
+public class Jogo
+{
+    public List<Jogador> Jogadores { get; set; } = new();
+    public List<int> Pontuacoes { get; set; } = new();
+    public Jogador? JogadorAtivo { get; set; }
+    public Mesa Mesa { get; set; } = new();
+
+    public void AdicionarJogador(Jogador jogador)
+    {
+        Jogadores.Add(jogador);
+    }
+
+    public void DefinirJogadorAtivo(Jogador jogador)
+    {
+        JogadorAtivo = jogador;
+    }
+
+    public void AtualizarPontuacao(int indiceJogador, int pontos)
+    {
+        while (Pontuacoes.Count <= indiceJogador)
+        {
+            Pontuacoes.Add(0);
+        }
+
+        Pontuacoes[indiceJogador] = pontos;
+    }
+}
